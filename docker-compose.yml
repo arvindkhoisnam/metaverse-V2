@@ -1,0 +1,25 @@
+version: "3.8"
+services:
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: mydatabase
+    ports:
+      - "5432:5432"
+
+  app:
+    build: .
+    environment:
+      DATABASE_URL: postgres://user:password@postgres:5432/mydatabase
+      POSTGRES_HOST: postgres
+    ports:
+      - "3000:3000"
+      - "3001:3001"
+    depends_on:
+      - postgres
+    command: >
+      sh -c "npx prisma migrate deploy --schema=./packages/db/prisma/schema.prisma &&
+      npx prisma generate --schema=./packages/db/prisma/schema.prisma &&
+      npm run dev:docker"

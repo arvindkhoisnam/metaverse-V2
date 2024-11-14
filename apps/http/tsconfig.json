@@ -1,0 +1,25 @@
+// {
+//   "extends": "@repo/typescript-config/base.json",
+//   "compilerOptions": {
+//     "esModuleInterop": true,
+//     "lib": ["ES2015"],
+//     "module": "NodeNext",
+//     "outDir": "./dist",
+//     "allowImportingTsExtensions": true,
+//     "noEmit": true
+//   },
+//   "exclude": ["node_modules"],
+//   "include": ["."]
+// }
+
+{
+  "extends": "@repo/typescript-config/base.json",
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "lib": ["ES2015"],
+    "module": "NodeNext",
+    "outDir": "./dist"
+  },
+  "exclude": ["node_modules"],
+  "include": ["."]
+}
